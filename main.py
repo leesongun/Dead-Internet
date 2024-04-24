@@ -21,10 +21,12 @@ def index(path):
 
     # Generate the page
     parsed_path = urlparse("http://" + path)
-    generated_page = engine.get_page(parsed_path.netloc, path=parsed_path.path)
+    generated_page = engine.get_page(
+        parsed_path.netloc, path=parsed_path.path, query=parsed_path.query
+    )
     return generated_page
 
 
 if __name__ == "__main__":
     app.run()
-    print(engine.export_internet())
+    engine.export_internet()
